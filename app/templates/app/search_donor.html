@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Search Donor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>body {
+        bac
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://as2.ftcdn.net/v2/jpg/03/26/06/75/1000_F_326067522_ptXvtEaaeXWHVU7pa9DYdrVTt8j17Fdn.jpg'); /* Replace 'background-image.jpg' with your image path */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        }
+    
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: rgba(255, 255, 255); /* Semi-transparent white background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    form {
+        margin-top: 20px;
+    }
+    
+    label {
+        font-weight: bold;
+    }
+    
+    select,
+    input[type="tel"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Donor</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="blood_group">Blood Group:</label>
+            <select name="blood_group" id="blood_group" required>
+                <option value="">Select a Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select><br>
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" name="phone_number" id="phone_number" required><br>
+            <input type="submit" value="Search">
+        </form>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

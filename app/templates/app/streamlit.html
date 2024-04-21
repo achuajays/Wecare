@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Streamlit Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .card a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Embedding Streamlit apps as cards -->
+    <div class="card">
+        <h2>Chest Xray</h2>
+        <p>Perform chest X-ray analysis.</p>
+        <a href="http://localhost:8501" target="_blank">Open Chest Xray</a>
+    </div>
+
+    <div class="card">
+        <h2>Verification</h2>
+        <p>Perform verification tasks.</p>
+        <a href="http://localhost:8502" target="_blank">Open Verification</a>
+    </div>
+
+    <div class="card">
+        <h2>Drug Verification</h2>
+        <p>Perform drug verification tasks.</p>
+        <a href="http://localhost:8503" target="_blank">Open Drug Verification</a>
+    </div>
+</body>
+</html>

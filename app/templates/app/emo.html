@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emotional Health Assessment</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://www.parents.com/thmb/FmihFthdF62Ou0EoUlRI7IKeb4k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-884378360-2000-6d8b0cd7ce0c4daf96ed15c80e3bfc16.jpg');
+        margin: 0;
+        padding: 20px;
+    }
+
+    form {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px); /* For glassmorphism effect */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 500px;
+        margin: 0 auto;
+        backdrop-filter: blur(10px); /* For glassmorphism effect */
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    pre {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    a {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<form id="emotionalAssessment" action="" method="post">
+    {% csrf_token %}
+  <label for="q1">1. How often do you feel overwhelmed by your emotions or find it difficult to control them?</label>
+  <input type="text" id="q1" name="n">
+
+  <label for="q2">2. Have you experienced a significant change in your sleeping patterns, appetite, or energy levels recently?</label>
+  <input type="text" id="q2" name="n1">
+
+  <label for="q3">3. Do you often feel hopeless, empty, or like life lacks meaning?</label>
+  <input type="text" id="q3" name="n2">
+
+  <label for="q4">4. Have you noticed a decrease in your interest or pleasure in activities you once enjoyed?</label>
+  <input type="text" id="q4" name="n3">
+
+  <label for="q5">5. Do you frequently experience intense mood swings or persistent feelings of sadness, anxiety, or irritability?</label>
+  <input type="text" id="q5" name="n4">
+
+  <input type="submit" value="Submit">
+</form>
+
+{% if output %}
+<pre>{{ output }}</pre>
+<a href="{{ download_url }}" download>Download</a>
+{% endif %}
+
+</body>
+</html>

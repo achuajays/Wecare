@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.myhealthspace.in/assets/img/consult-min.jpg');  
+          margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: cover;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Appointment with {{ doctor.doctor_name }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="time">Select a time:</label>
+                <select name="time" id="time">
+                    <option value="">--- Select a time ---</option>
+                    <option value="10Am - 11Am">10Am - 11Am </option>
+                    <option value="11Am - 12Pm">11Am - 12Pm </option>
+                    <option value="1Pm - 2Pm">1Pm - 2Pm </option>
+                    <option value="2Pm - 3Pm">2Pm - 3Pm </option>
+                    <option value="4Pm - 5Pm">4Pm - 5Pm </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="patient_name">Patient Name:</label>
+                <input type="text" name="patient_name" id="patient_name">
+            </div>
+            <div class="form-group">
+                <label for="symptom">Symptom:</label>
+                <input type="text" name="symptom" id="symptom">
+            </div>
+            <input type="submit" value="Book Appointment">
+        </form>
+        {% if time %}
+        <p>You have booked an appointment with {{ doctor.doctor_name }} at {{ time }} for {{ patient_name }}.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

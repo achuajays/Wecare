@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://goqii.com/blog/wp-content/uploads/Doctor-Consultation.jpg');
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            width: calc(50% - 20px); /* Two cards per row */
+            max-width: calc(50% - 20px); /* Two cards per row */
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #111111;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Doctor List</h1>
+        <div class="card-container">
+            {% for doctor in doctors %}
+            <div class="card">
+                <a href="{% url 'display_doctor_form' doctor.id %}">{{ doctor.doctor_name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

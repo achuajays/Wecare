@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> 
+    <style>
+        /* Custom CSS */
+        body {
+            margin-left: 8%;
+            margin-right: 8%;
+            background-image: url('https://cdn.dribbble.com/userupload/2798814/file/original-3cfdbabadfd8f92aed97b0c0b57c6b89.png?resize=1024x768');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        .form-label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .report-link {
+            display: block;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .report-link:hover {
+            background-color: #0056b3;
+        }
+        .home-link {
+            display: block;
+            text-align: center;
+            background-color: #666;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .home-link:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body class="bg-blue-100">
+    <div class="container mx-auto py-8">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">Logic Assistant</h1>
+            <form method="POST" class="space-y-4">
+                {% csrf_token %}
+                <label for="name" class="form-label">Enter your name:</label>
+                <input type="text" name="name" id="name" class="form-input">
+                <label for="age" class="form-label">Enter your age:</label>
+                <input type="text" name="age" id="age" class="form-input">
+                <label for="weight" class="form-label">Enter your weight:</label>
+                <input type="text" name="weight" id="weight" class="form-input">
+                <label for="height" class="form-label">Enter your height:</label>
+                <input type="text" name="height" id="height" class="form-input">
+                <label for="symptom" class="form-label">Enter your Symptoms:</label>
+                <input type="text" name="symptom" id="symptom" class="form-input">
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            {% if output %}
+                <pre class="p-4">{{ output }}</pre>
+                <a href="{{ download_url  }}" class="report-link" download>Download Report</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container mx-auto py-4">
+        <a href="{% url 'home' %}" class="home-link">
+            Home
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcription Result</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #00ABE4; /* Background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%; /* Responsive width */
+        }
+        .long {
+            display: flex;
+            flex-direction: column; /* Stack items vertically on smaller screens */
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+        }
+        .text-title {
+            font-size: 1.5rem; /* Adjusted font size for responsiveness */
+            font-weight: bold; /* Changed font weight */
+            color: #4a5568; /* Adjusted text color */
+            margin-bottom: 1rem; /* Add some bottom margin for spacing */
+        }
+        .transcribed-text {
+            background-color: #EDF2F7; /* Light gray background color */
+            padding: 1rem; /* Adjusted padding */
+            border-radius: 0.5rem; /* Rounded corners */
+            width: 100%; /* Full width */
+            max-width: 100%;
+            overflow-x: auto; /* Allow horizontal scrolling for long text */
+        }
+        .btn-download,
+        .btn-home {
+            display: block;
+            text-align: center;
+            margin-top: 1rem; /* Add some top margin for spacing */
+            text-decoration: none;
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem; /* Adjusted padding */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-download {
+            background-color: #4a5568; /* Gray color */
+        }
+        .btn-download:hover {
+            background-color: #2d3748; /* Darker gray color on hover */
+        }
+        .btn-home {
+            background-color: #34d399; /* Green color */
+        }
+        .btn-home:hover {
+            background-color: #2ca25f; /* Darker green color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-title">Transcribed Text</h1>
+        <div class="transcribed-text">{{ output }}</div>
+        <a href="{{ download_url }}" download="transcription.txt" class="btn-download">Download Transcription</a>
+        <a href="{% url 'home' %}" class="btn-home">Home</a>
+    </div>
+</body>
+</html>

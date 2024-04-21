@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Transcription</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #00ABE4; /* Background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%; /* Responsive width */
+        }
+        .long {
+            display: flex;
+            flex-direction: column; /* Stack items vertically on smaller screens */
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+        }
+        label {
+            font-size: 1.2rem; /* Adjusted font size for responsiveness */
+            color: #4a5568; /* Adjusted label color */
+            font-weight: bold; /* Changed label font weight */
+            margin-bottom: 1rem; /* Add some bottom margin for spacing */
+        }
+        input[type="file"] {
+            border: 2px solid #cbd5e0; /* Adjusted border color */
+            border-radius: 0.5rem; /* Adjusted border radius */
+            padding: 0.5rem; /* Adjusted padding */
+            width: 100%; /* Full width */
+            max-width: 100%;
+        }
+        .btn-transcribe {
+            background-color: #34d399; /* Green color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem; /* Adjusted padding */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-transcribe:hover {
+            background-color: #2ca25f; /* Darker green color on hover */
+        }
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem; /* Add some top margin for spacing */
+            text-decoration: none;
+            background-color: #4a5568; /* Gray color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem; /* Adjusted padding */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .home-link:hover {
+            background-color: #2d3748; /* Darker gray color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-4 text-center text-gray-800">Transcribe Audio File</h1>
+        <form method="POST" enctype="multipart/form-data" class="space-y-4 long">
+            {% csrf_token %}
+            <div>
+                <label for="audio_file">Select audio file:</label>
+                <input type="file" id="audio_file" name="audio_file">
+            </div>
+           <br> <button type="submit" class="btn-transcribe">Transcribe</button>
+        </form>
+        <a href="{% url 'home' %}" class="home-link">Home</a>
+    </div>
+</body>
+</html>
